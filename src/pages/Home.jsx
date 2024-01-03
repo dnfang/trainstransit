@@ -17,7 +17,7 @@ const formatDateToYYYYMMDD = (date) => {
 }
 
 const fetchTrips = async (depArrMacro, itdDate, itdTime, startStation, endStation) => {
-  const response = await fetch('/trip?depArrMacro=' + depArrMacro + '&itdDate=' + itdDate + '&itdTime=' + itdTime + '&startStation=' + startStation + '&endStation=' + endStation)
+  const response = await fetch('https://traintransit.alwaysdata.net/trip?depArrMacro=' + depArrMacro + '&itdDate=' + itdDate + '&itdTime=' + itdTime + '&startStation=' + startStation + '&endStation=' + endStation)
 
   return await response.json()
 }

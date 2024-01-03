@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 const fetchStations = async (stationString) => {
-  const response = await fetch('/stopfinder?station=' + stationString)
+  const response = await fetch('https://traintransit.alwaysdata.net/stopfinder?station=' + stationString)
 
   return await response.json()
 }
