@@ -16,7 +16,7 @@ export const AutoCompleteStation = ({ onSelect, text }) => {
     <Autocomplete
       disablePortal
       options={stationList}
-      sx={{ width: 300, marginBottom: '20px' }}
+      sx={{ maxWidth: 300, marginBottom: '20px' }}
       value={stationName}
       onChange={(event, value) => {
         if (!value) {

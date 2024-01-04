@@ -234,7 +234,7 @@ export const ExpandStopsButton = ({ onSelect }) => {
   
   return (
     <>
-    <Button variant="contained" onClick={() => {
+    <Button sx={{ width: '10px' }} variant="contained" onClick={() => {
       onSelect(!(expandState))
       setExpandState(!(expandState))
     }}>

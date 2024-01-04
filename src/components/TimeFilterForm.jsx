@@ -5,8 +5,8 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker';
 
 export const TimeFilterForm = ({ onSelectTimeOption, onSelectDate, onSelectTime }) => {
   const [timeFilter, setTimeFilter] = React.useState('now')
@@ -33,37 +33,37 @@ export const TimeFilterForm = ({ onSelectTimeOption, onSelectDate, onSelectTime 
 
       {timeFilter === 'arr' &&
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker disablePast label="Choose date" value={dateValue} onChange={(date) => {
+            <DesktopDatePicker disablePast label="Choose date" value={dateValue} onChange={(date) => {
               setDateValue(date);
               onSelectDate(date);
             }}
             slotProps={{ textField: { disabled: true } }}
-            ></DatePicker>
-            <TimePicker ampm={false} label="Choose time" value={timeValue} onChange={(time) => {
+            ></DesktopDatePicker>
+            <DesktopTimePicker ampm={false} label="Choose time" value={timeValue} onChange={(time) => {
               setTimeValue(time);
               onSelectTime(time);
             }}
             slotProps={{ textField: { disabled: true } }}
             sx={{ marginBottom: '15px' }}
-            ></TimePicker>
+            ></DesktopTimePicker>
           </LocalizationProvider>
       }
 
       {timeFilter === 'dep' &&
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker disablePast label="Choose date" value={dateValue} onChange={(date) => {
+          <DesktopDatePicker disablePast label="Choose date" value={dateValue} onChange={(date) => {
             setDateValue(date);
             onSelectDate(date);
           }}
           slotProps={{ textField: { disabled: true } }}
-          ></DatePicker>
-          <TimePicker ampm={false} label="Choose time" value={timeValue} onChange={(time) => {
+          ></DesktopDatePicker>
+          <DesktopTimePicker ampm={false} label="Choose time" value={timeValue} onChange={(time) => {
             setTimeValue(time);
             onSelectTime(time);
           }}
           slotProps={{ textField: { disabled: true } }}
           sx={{ marginBottom: '15px' }}
-          ></TimePicker>
+          ></DesktopTimePicker>
         </LocalizationProvider>
       }
     </>
