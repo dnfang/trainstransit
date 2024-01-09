@@ -17,11 +17,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
 
-export async function getConnectingPlatform (stationString, platformOriginString, platformDestString) {
+export async function getConnectingPlatform (stationString, platformOriginString, platformDestString, legDescription) {
   const stationRef = await getDoc(doc(firestore, 'Stations', stationString ))
 
   if (!(stationRef.exists())) {
     return null
+  }
+
+  if (Object.keys(stationRef.data()).includes(legDescription)) {
+    if (Object.keys(stationRef.data()[legDescription][platformOriginString]).includes(platformDestString)) {
+      return stationRef.data()[legDescription][platformOriginString][platformDestString]
+    } else {
+      return stationRef.data()[legDescription][platformOriginString]['Exit']
+    }
   }
 
   if (Object.keys(stationRef.data()[platformOriginString]).includes(platformDestString)) {

@@ -38,14 +38,17 @@ const getPlatform = (leg, keyIndex, legs) => {
     let platformRegex = /Platform \d+$/
     platformOrigin = platformOrigin[1]
     platformOrigin = platformOrigin.match(platformRegex)[0]
-    return getNextLegPlatform(index, legs, platformOrigin, getDestinationInNextLeg).then((p) => {
+
+    let legDescription = leg.transportation.description
+
+    return getNextLegPlatform(index, legs, platformOrigin, getDestinationInNextLeg, legDescription).then((p) => {
       return p
     })
   }
   return null
 }
 
-const getNextLegPlatform = (index, legs, platformOrigin, getDestination) => {
+const getNextLegPlatform = (index, legs, platformOrigin, getDestination, legDescription) => {
   for (let i = 0; i < legs.length; i++) {
     if (i === index && legs[i].transportation.product.class !== 1 ) {
       return new Promise((resolve, reject) => {
@@ -60,7 +63,7 @@ const getNextLegPlatform = (index, legs, platformOrigin, getDestination) => {
 
         let platformRegex = /Platform \d+$/
         let platformString = legs[i].destination.disassembledName.match(platformRegex)[0]
-        let platform = getConnectingPlatform(platformName, platformOrigin, platformString)
+        let platform = getConnectingPlatform(platformName, platformOrigin, platformString, legDescription)
         return platform.then((p) => {
           return p
         })
@@ -70,7 +73,7 @@ const getNextLegPlatform = (index, legs, platformOrigin, getDestination) => {
 
         let platformRegex = /Platform \d+$/
         let platformString = legs[i].origin.disassembledName.match(platformRegex)[0]
-        let platform = getConnectingPlatform(platformName, platformOrigin, platformString)
+        let platform = getConnectingPlatform(platformName, platformOrigin, platformString, legDescription)
         return platform.then((p) => {
           return p
         })
