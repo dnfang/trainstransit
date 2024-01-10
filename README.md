@@ -14,3 +14,7 @@ More lines will be added in the future
 
 ## Usage
 [https://dnfang.github.io/trainstransit/](https://dnfang.github.io/trainstransit/)
+
+## Attribution
+Trip data from [Transport for NSW](https://transportnsw.info/).
+Usage of Trip Planner API from [Transport for NSW Open Data Hub](https://opendata.transport.nsw.gov.au/dataset/72715aef-c79c-463c-9207-4a2d010aff40/resource/3d6b8fd7-67f6-4b17-8942-3ab2ad9aed62/download/trip-planner-api-manual-opendataproduction-v3.3.pdf).
